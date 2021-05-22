@@ -1,7 +1,7 @@
 /*
 Ques: Find the majority element that occurs more than floor(n/2) times
-Time Complexity: 
-Space Complexity: 
+Time Complexity: O(n)
+Space Complexity: O(1)
 */
 #include <iostream>
 #include <map>

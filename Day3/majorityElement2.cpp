@@ -1,7 +1,7 @@
 /*
 Ques: 
-Time Complexity: 
-Space Complexity: 
+Time Complexity: O(n)
+Space Complexity: O(n)
 */
 #include <iostream>
 #include <map>
