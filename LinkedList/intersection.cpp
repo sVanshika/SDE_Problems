@@ -24,19 +24,23 @@ ListNode* intersectionOptimal(ListNode* l1, ListNode* l2){
     int n1=0, n2=0;
     ListNode* temp1=l1;
     ListNode* temp2=l2;
+    //finding size of l1
     while(temp1!=NULL){
         n1++;
         temp1=temp1->next;
     }
+    //finding size of l2
     while(temp2!=NULL){
         n2++;
         temp2=temp2->next;
     }
     //cout<<"n1:"<<n1<<" n2:"<<n2<<endl;
 
+    //considering size of l1 < size of l2
     if(n1>n2) swap(l2,l1);
 
     temp1=l1, temp2=l2;
+    //moving temp2 to same starting point for temp1 and temp2
     for(int i=0; i<abs(n2-n1); i++)
         temp2=temp2->next;
     
