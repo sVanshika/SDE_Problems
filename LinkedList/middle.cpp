@@ -28,14 +28,10 @@ ListNode* middleNode(ListNode* head) {
     else{
         ListNode* slow=head;
         ListNode* fast=head;
-        while(true){
-            //cout<<slow->val<<","<<fast->val<<endl;
-            if(fast==NULL) break;
-            else if(fast->next==NULL) break;
-            else{
-                slow=slow->next;
-                fast=fast->next->next;
-            }
+     
+        while(fast!=NULL && fast->next!=NULL){
+            slow = slow->next;
+            fast = fast->next->next;
         }
         return slow;
     }
@@ -48,12 +44,16 @@ int main(){
     ListNode* c = new ListNode(7, NULL);
     ListNode* d = new ListNode(6, NULL);
     ListNode* e = new ListNode(9, NULL);
+    ListNode* f = new ListNode(10, NULL);
+    ListNode* g = new ListNode(11, NULL);
 
     l1->next = a;
     a->next = b;
     b->next = c;
     c->next = d;
     d->next = e;
+    e->next = f;
+    f->next = g;
 
     display(l1);
     cout<<middleNode(l1)->val<<endl;

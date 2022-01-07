@@ -1,51 +1,40 @@
 /*
 Ques: 
-Time Complexity: Optimal=O(n); Brute=O(n^2)
-Space Complexity: O(1)
+Time Complexity: 
+Space Complexity: 
 */
 #include <iostream>
 #include <vector>
-#include <climits>
-#include <algorithm>
-#include <chrono>
 using namespace std;
-using namespace std::chrono;
 
-int main(){
-    vector<int> prices = {6,5,4,3,1,2};
-    int minValue=INT_MAX, profit=0;
+// O(n^2)
+int maxProfit(vector<int> &prices){
+    int profit=0, buy;
 
-    auto start = high_resolution_clock::now();
-    min(3,6);
-    auto stop = high_resolution_clock::now();
-    cout << duration_cast<microseconds>(stop - start).count() << endl;
-
-    for(int i=0; i<prices.size(); i++){
-        /*
-        if(prices[i]<minValue)
-            minValue = prices[i];
-        else if(prices[i]-minValue > profit) 
-            profit = prices[i]-minValue;
-        */
-
-        minValue = min(minValue, prices[i]);
-        profit = max(prices[i]-minValue, profit);
-
-    }
-    cout<<profit;
-    /* 
-    ==== O(n^2) ===== 
-    int max=0;
     for(int i=0; i<prices.size(); i++){
         for(int j=i+1; j<prices.size(); j++){
-            if(prices[j] > prices[i] && prices[j]-prices[i]>max){
-                max = prices[j]-prices[i];
-                //cout<<i<<" "<<j<<endl;
-            }
+            if(prices[j] > prices[i])
+                profit = max(profit, prices[j]-prices[i]);
         }
     }
-    cout<<max<<endl;
-    */
+    return profit;
+}
 
+// O(n)
+int maxProfitOptimal(vector<int> &prices){
+    int profit=0, minPrice=prices[0];
+
+    for(int i=0; i<prices.size(); i++){
+        minPrice = min(minPrice, prices[i]);
+        profit = max(profit, prices[i] - minPrice);
+    }
+    
+    return profit;
+}
+
+int main(){
+    vector<int> prices = {7,1,5,3,6,4};
+    cout << maxProfit(prices) << endl;
+    cout << maxProfitOptimal(prices) << endl;
     return 0;
 }

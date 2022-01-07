@@ -6,6 +6,24 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+/*
+minimum difference
+    = last element - first element
+    = diff of consecutive element
+1. sort the array
+2. take out max element and min element
+3. if a[i]-k >= 0
+        we can check on consecutive elements
+        max = (last element - k) or (current element + k)
+        min = (first element + k) or (previous element - k)
+    else
+        only first and last element counts
+        max = last element - k
+        min = first element + k
+4. take out max difference 
+5. loop - step 3 and step 4
+*/
+
 int getMinDiff(int arr[], int n, int k) {
     sort(arr, arr+n);
         
